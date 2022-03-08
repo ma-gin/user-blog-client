@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import "react-quill/dist/quill.snow.css";
-import ReactQuill from "react-quill";
-import { Container, Form, Button } from "react-bootstrap";
-import "./styles.css";
+import React, { Component } from "react"
+import "react-quill/dist/quill.snow.css"
+import ReactQuill from "react-quill"
+import { Container, Form, Button } from "react-bootstrap"
+import "./styles.css"
 export default class NewBlogPost extends Component {
   constructor(props) {
-    super(props);
-    this.state = { text: "" };
-    this.handleChange = this.handleChange.bind(this);
+    super(props)
+    this.state = { text: "" }
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(value) {
-    this.setState({ text: value });
+    this.setState({ text: value })
   }
 
   render() {
@@ -48,13 +48,12 @@ export default class NewBlogPost extends Component {
               type="submit"
               size="lg"
               variant="dark"
-              style={{ marginLeft: "1em" }}
-            >
+              style={{ marginLeft: "1em" }}>
               Submit
             </Button>
           </Form.Group>
         </Form>
       </Container>
-    );
+    )
   }
 }
