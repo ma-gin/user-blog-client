@@ -18,3 +18,10 @@
   width: 160px;
   text-decoration: none;
 }
+
+.btn-primary {
+  border-color: black !important;
+}
+.ms-2 {
+  background-color: hsl(168, 53%, 70%) !important;
+}
