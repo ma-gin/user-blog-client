@@ -4,8 +4,9 @@ import Footer from "./components/footer"
 import Home from "./views/home"
 import Blog from "./views/blog"
 import NewBlogPost from "./views/new"
-import NewAuthor from "./views/author"
+import NewAuthor from "./views/author/index.js"
 import { BrowserRouter, Route } from "react-router-dom"
+import Backdrop from "./components/modal/backdrop"
 
 function App() {
   // const [list, setList] = useState([])
@@ -21,6 +22,7 @@ function App() {
       <Route path="/blog/:id" exact component={Blog} />
       <Route path="/new" exact component={NewBlogPost} />
       <Route path="/newAuthor" exact component={NewAuthor} />
+      <Route path="/modal" exact component={Backdrop} />
       <Footer />
     </BrowserRouter>
   )

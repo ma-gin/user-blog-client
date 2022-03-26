@@ -6,13 +6,13 @@ import BlogItem from "../blog-item"
 export default class BlogList extends Component {
   state = { posts: [] }
 
-  // fetchURL = process.env.REACT_APP_POSTS_URL
-
   fetchData = async () => {
+    const fetchURL = process.env.REACT_APP_POSTS_URL
+
     try {
       // const { REACT_APP_POSTS_URL } = process.env
       // console.log(process.env.REACT_APP_POSTS_URL)
-      const response = await fetch(`http://localhost:3001/posts`)
+      const response = await fetch(`${fetchURL}`)
       const data = await response.json()
 
       if (response.ok) {
@@ -39,8 +39,8 @@ export default class BlogList extends Component {
       <Row>
         {this.state.posts &&
           this.state.posts.map((post) => (
-            <Col md={4} style={{ marginBottom: 50 }}>
-              <BlogItem key={post.id} {...post} />
+            <Col key={post.id} md={4} style={{ marginBottom: 50 }}>
+              <BlogItem {...post} />
             </Col>
           ))}
       </Row>
