@@ -32,7 +32,7 @@ export default function Modal({ handleClose }) {
         }
       }
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
@@ -40,21 +40,21 @@ export default function Modal({ handleClose }) {
     <Backdrop onClick={handleClose}>
       <div onClick={(e) => e.stopPropagation()} className="author-modal">
         <Form onSubmit={(e) => createAuthor(e)}>
-          <Form.Group controlId="name" className="mt-3">
-            <Form.Label>Name</Form.Label>
+          <Form.Group controlId="name" className="mt-1">
+            <Form.Label>First Name</Form.Label>
             <Form.Control
               size="lg"
-              placeholder="Name"
+              placeholder="First Name"
               onChange={(e) => setName(e.target.value)}
             />
-            <Form.Label>Surname</Form.Label>
+            <Form.Label className="mt-2">Last Name</Form.Label>
             <Form.Control
               size="lg"
-              placeholder="Surname"
+              placeholder="Last Name"
               onChange={(e) => setSurname(e.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId="author-email" className="mt-3">
+          <Form.Group controlId="author-email" className="mt-2">
             <Form.Label>Email</Form.Label>
             <Form.Control
               size="lg"
@@ -62,7 +62,7 @@ export default function Modal({ handleClose }) {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId="author-img" className="mt-3">
+          <Form.Group controlId="author-img" className="mt-2">
             <Form.Label>Profile Image</Form.Label>
           </Form.Group>
           <Form.Group className="d-flex mt-3 justify-content-end">
@@ -71,6 +71,7 @@ export default function Modal({ handleClose }) {
             </Button>
             <Button
               type="submit"
+              onClick={handleClose}
               size="lg"
               variant="dark"
               style={{ marginLeft: "1em" }}>

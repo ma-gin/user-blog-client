@@ -6,7 +6,10 @@ import "./styles.css"
 export default class NewBlogPost extends Component {
   constructor(props) {
     super(props)
-    this.state = { text: "" }
+    this.state = {
+      text: "",
+      authors: [],
+    }
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -14,10 +17,30 @@ export default class NewBlogPost extends Component {
     this.setState({ text: value })
   }
 
+  componentDidMount() {
+    this.fetchAuthors()
+  }
+
+  fetchAuthors() {
+    fetch("http://localhost:3001/authors")
+      .then((res) => res.json())
+      .then((authors) => this.setState({ authors: authors }))
+      .catch((error) => console.log(error.message))
+  }
+
   render() {
     return (
       <Container className="new-blog-container">
         <Form className="mt-5">
+          <Form.Group controlId="blog-author" className="mt-3">
+            <Form.Label>Author</Form.Label>
+            <Form.Control size="lg" as="select">
+              {this.state.authors.map((author) => (
+                <option
+                  key={author.id}>{`${author.name} ${author.surname}`}</option>
+              ))}
+            </Form.Control>
+          </Form.Group>
           <Form.Group controlId="blog-form" className="mt-3">
             <Form.Label>Title</Form.Label>
             <Form.Control size="lg" placeholder="Title" />
@@ -25,11 +48,11 @@ export default class NewBlogPost extends Component {
           <Form.Group controlId="blog-category" className="mt-3">
             <Form.Label>Category</Form.Label>
             <Form.Control size="lg" as="select">
-              <option>Category1</option>
-              <option>Category2</option>
-              <option>Category3</option>
-              <option>Category4</option>
-              <option>Category5</option>
+              <option>Technology</option>
+              <option>Health & Fitness</option>
+              <option>Finance</option>
+              <option>Self Improvement</option>
+              <option>Revolution</option>
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="blog-content" className="mt-3">

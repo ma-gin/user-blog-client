@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import { Container, Navbar, Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import "./styles.css"

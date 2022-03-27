@@ -2,4 +2,8 @@
   background-color: hsl(168, 53%, 70%) !important;
   padding: 1.6rem 3.2rem;
   border-radius: 30px;
+  border: 4px solid #212529c4;
+  box-shadow: 5px 6px 42px -9px rgba(0, 0, 0, 0.84);
+  -webkit-box-shadow: 5px 6px 42px -9px rgba(0, 0, 0, 0.84);
+  -moz-box-shadow: 5px 6px 42px -9px rgba(0, 0, 0, 0.84);
 }

@@ -10,15 +10,11 @@ export default class BlogList extends Component {
     const fetchURL = process.env.REACT_APP_POSTS_URL
 
     try {
-      // const { REACT_APP_POSTS_URL } = process.env
-      // console.log(process.env.REACT_APP_POSTS_URL)
       const response = await fetch(`${fetchURL}`)
       const data = await response.json()
 
       if (response.ok) {
         this.setState({ posts: data })
-        // console.log(data)
-        console.log(this.state.posts)
       }
     } catch (error) {
       console.log(error)
