@@ -4,7 +4,9 @@
   right: 0;
   bottom: 0;
   left: 0;
-  color: #e60707bb;
-  display: grid;
-  place-items: center;
+  background-color: #0000008e;
+  z-index: 1050;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
