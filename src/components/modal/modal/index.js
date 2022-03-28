@@ -8,7 +8,7 @@ export default function Modal({ handleClose }) {
   const [surname, setSurname] = useState("")
   const [email, setEmail] = useState("")
 
-  const createAuthor = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const newAuthor = { name, surname, email }
     const request = {
@@ -21,7 +21,6 @@ export default function Modal({ handleClose }) {
     try {
       let response = await fetch("http://localhost:3001/authors", request)
       if (response.ok) {
-        console.log(response)
       } else {
         alert("something went wrong")
         if (response.status === 400) {
@@ -41,7 +40,7 @@ export default function Modal({ handleClose }) {
   return (
     <Backdrop onClick={handleClose}>
       <div onClick={(e) => e.stopPropagation()} className="author-modal">
-        <Form onSubmit={(e) => createAuthor(e)}>
+        <Form onSubmit={(e) => handleSubmit(e)}>
           <Form.Group controlId="name" className="mt-1">
             <Form.Label>First Name</Form.Label>
             <Form.Control

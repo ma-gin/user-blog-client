@@ -13,18 +13,9 @@ export default class BlogItem extends Component {
           <div className="d-flex flex-column">
             <div className="title my-4 fw-bold">{title}</div>
             <div className="content">{content}</div>
-            <div className="author my-3">{`By: ${author.name} ${author.surname}`}</div>
+            <div className="author my-3">{`${author.name} ${author.surname}`}</div>
           </div>
         </div>
-        {/* <Card className="blog-card">
-          <Card.Img variant="top" src={cover} className="blog-cover" />
-          <Card.Body>
-            <Card.Title>{title}</Card.Title>
-          </Card.Body>
-          <Card.Footer>
-            <BlogAuthor {...author} />
-          </Card.Footer>
-        </Card> */}
       </Link>
     )
   }
