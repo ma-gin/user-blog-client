@@ -33,6 +33,8 @@ export default function Modal({ handleClose }) {
       }
     } catch (error) {
       console.error(error)
+    } finally {
+      handleClose()
     }
   }
 
@@ -71,7 +73,7 @@ export default function Modal({ handleClose }) {
             </Button>
             <Button
               type="submit"
-              onClick={handleClose}
+              //sss onClick={handleClose}
               size="lg"
               variant="dark"
               style={{ marginLeft: "1em" }}>

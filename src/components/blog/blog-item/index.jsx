@@ -1,15 +1,22 @@
 import React, { Component } from "react"
-import { Card } from "react-bootstrap"
-import BlogAuthor from "../blog-author"
+// import BlogAuthor from "../blog-author"
 import { Link } from "react-router-dom"
 import "./styles.css"
 
 export default class BlogItem extends Component {
   render() {
-    const { title, cover, author, _id } = this.props
+    const { title, cover, author, content, _id } = this.props
     return (
       <Link to={`/blog/${_id}`} className="blog-link">
-        <Card className="blog-card">
+        <div className="d-flex w-100 blog-item">
+          <img className="blog-cover me-4" src={cover} alt="alt" />
+          <div className="d-flex flex-column">
+            <div className="title my-4 fw-bold">{title}</div>
+            <div className="content">{content}</div>
+            <div className="author my-3">{`By: ${author.name} ${author.surname}`}</div>
+          </div>
+        </div>
+        {/* <Card className="blog-card">
           <Card.Img variant="top" src={cover} className="blog-cover" />
           <Card.Body>
             <Card.Title>{title}</Card.Title>
@@ -17,7 +24,7 @@ export default class BlogItem extends Component {
           <Card.Footer>
             <BlogAuthor {...author} />
           </Card.Footer>
-        </Card>
+        </Card> */}
       </Link>
     )
   }
