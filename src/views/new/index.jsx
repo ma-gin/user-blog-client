@@ -20,8 +20,12 @@ export default function NewBlogPost() {
   }
 
   const findAuthor = (value) => {
-    console.log(value)
-    // authors.find(item=>item.name == value)
+    const selectedAuthor = value.split(" ")
+    const chosenAuthor = authors.find(
+      (item) =>
+        item.name === selectedAuthor[0] && item.surname === selectedAuthor[1]
+    )
+    setAuthor(chosenAuthor.id)
   }
 
   const fetchAuthors = () => {
@@ -39,7 +43,11 @@ export default function NewBlogPost() {
           <Form.Control
             size="lg"
             as="select"
+            placeholder="Select Author"
             onChange={(e) => findAuthor(e.target.value)}>
+            <option value="" disabled selected hidden>
+              Please Choose...
+            </option>
             {authors &&
               authors.map((author) => (
                 <option
