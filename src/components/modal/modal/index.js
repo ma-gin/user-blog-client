@@ -72,7 +72,6 @@ export default function Modal({ handleClose }) {
             </Button>
             <Button
               type="submit"
-              //sss onClick={handleClose}
               size="lg"
               variant="dark"
               style={{ marginLeft: "1em" }}>

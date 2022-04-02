@@ -5,7 +5,7 @@ import { Container, Form, Button } from "react-bootstrap"
 import "./styles.css"
 
 export default function NewBlogPost() {
-  const [text, setText] = useState("")
+  const [content, setContent] = useState("")
   const [authors, setAuthors] = useState([])
   const [author, setAuthor] = useState("")
   const [title, setTitle] = useState("")
@@ -15,8 +15,10 @@ export default function NewBlogPost() {
     fetchAuthors()
   }, [])
 
-  const handleContent = (value) => {
-    setText(value)
+  const handleContent = (content, delta, source, editor) => {
+    // console.log(editor.getHTML())
+    // console.log(editor.getText())
+    setContent(editor.getHTML())
   }
 
   const findAuthor = (value) => {
@@ -35,19 +37,44 @@ export default function NewBlogPost() {
       .catch((error) => console.log(error.message))
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const newPost = { title, category, author, content }
+    const request = {
+      method: "POST",
+      body: JSON.stringify(newPost),
+      headers: {
+        "Content-type": "application/json",
+      },
+    }
+    try {
+      const response = await fetch("http://localhost:3001/posts", request)
+      console.log(request.body)
+      if (response.ok) {
+      } else {
+        alert("something went wrong")
+        if (response.status === 400) {
+          alert("bad request")
+        }
+        if (response.status === 404) {
+          alert("page not found")
+        }
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <Container className="new-blog-container">
-      <Form className="mt-5">
+      <Form className="mt-5" onSubmit={(e) => handleSubmit(e)}>
         <Form.Group controlId="blog-author" className="mt-3">
           <Form.Label>Author</Form.Label>
           <Form.Control
             size="lg"
             as="select"
-            placeholder="Select Author"
-            onChange={(e) => findAuthor(e.target.value)}>
-            <option value="" disabled selected hidden>
-              Please Choose...
-            </option>
+            onChange={(e) => findAuthor(e.target.value)}
+            defaultValue={"Please Choose"}>
             {authors &&
               authors.map((author) => (
                 <option
@@ -79,7 +106,7 @@ export default function NewBlogPost() {
         <Form.Group controlId="blog-content" className="mt-3">
           <Form.Label>Blog Content</Form.Label>
           <ReactQuill
-            value={text}
+            value={content}
             onChange={handleContent}
             className="new-blog-content"
           />
