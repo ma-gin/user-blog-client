@@ -26,7 +26,7 @@ function App() {
       <Route exact path="/">
         <Home setPosts={setPosts} posts={posts} searched={searched} />
       </Route>
-      <Route path="/blog/:id" exact component={Blog} />
+      <Route path="/posts/:id" exact component={Blog} />
       <Route path="/new" exact component={NewBlogPost} />
       <Route path="/newAuthor" exact component={NewAuthor} />
       <Route path="/modal" exact component={Modal} />

@@ -12,7 +12,7 @@ export default function NewAuthor() {
     const newAuthor = { name, surname, email }
     console.log(newAuthor)
     try {
-      let response = await fetch("http://localhost:3001/authors", {
+      let response = await fetch(process.env.REACT_APP_AUTHORS_URL, {
         method: "POST",
         body: JSON.stringify(newAuthor),
         headers: {

@@ -19,7 +19,7 @@ export default function Modal({ handleClose }) {
       },
     }
     try {
-      let response = await fetch("http://localhost:3001/authors", request)
+      let response = await fetch(process.env.REACT_APP_AUTHORS_URL, request)
       if (response.ok) {
       } else {
         alert("something went wrong")

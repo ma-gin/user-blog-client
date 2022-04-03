@@ -31,7 +31,7 @@ export default function NewBlogPost() {
   }
 
   const fetchAuthors = () => {
-    fetch("http://localhost:3001/authors")
+    fetch(process.env.REACT_APP_AUTHORS_URL)
       .then((res) => res.json())
       .then((authors) => setAuthors(authors))
       .catch((error) => console.log(error.message))

@@ -3,7 +3,6 @@ import { Button, Container, Image } from "react-bootstrap"
 import { withRouter } from "react-router"
 import BlogAuthor from "../../components/blog/blog-author"
 import BlogLike from "../../components/likes/BlogLike"
-import posts from "../../data/posts.json"
 import "./styles.css"
 
 class Blog extends Component {
@@ -13,14 +12,15 @@ class Blog extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params
-    console.log(posts)
-    const blog = posts.find((post) => post._id.toString() === id)
-    if (blog) {
-      this.setState({ blog, loading: false })
-    } else {
-      this.props.history.push("/404")
+    const fetchPost = (id) => {
+      // fetch(`${process.env.REACT_APP_POSTS_URL}/${id}`)
+      fetch(process.env.REACT_APP_POSTS_URL + id)
+        .then((res) => res.json())
+        .then((post) => this.setState({ blog: post, loading: false }))
+        .catch((error) => console.log(error.message))
     }
+    const { id } = this.props.match.params
+    fetchPost(id)
   }
 
   render() {
@@ -36,12 +36,11 @@ class Blog extends Component {
 
             <div className="blog-details-container">
               <div className="blog-details-author">
-                posts
                 <BlogAuthor {...blog.author} />
               </div>
               <div className="blog-details-info">
                 <div>{blog.createdAt}</div>
-                <div>{`${blog.readTime.value} ${blog.readTime.unit} read`}</div>
+                {/* <div>{`${blog.readTime.value} ${blog.readTime.unit} read`}</div> */}
                 <div style={{ marginTop: 20 }}>
                   <BlogLike defaultLikes={["123"]} onChange={console.log} />
                 </div>
