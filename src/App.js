@@ -5,7 +5,7 @@ import Home from "./views/home"
 import Blog from "./views/blog"
 import NewBlogPost from "./views/new"
 import NewAuthor from "./views/author/index.js"
-import { BrowserRouter, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Modal from "./components/modal/modal"
 
 function App() {
@@ -23,13 +23,19 @@ function App() {
   return (
     <BrowserRouter>
       <Nav searched={setSearched} handleOpen={handleOpen} />
-      <Route exact path="/">
-        <Home setPosts={setPosts} posts={posts} searched={searched} />
-      </Route>
-      <Route path="/posts/:id" exact component={Blog} />
-      <Route path="/new" exact component={NewBlogPost} />
-      <Route path="/newAuthor" exact component={NewAuthor} />
-      <Route path="/modal" exact component={Modal} />
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <Home setPosts={setPosts} posts={posts} searched={searched} />
+          }
+        />
+        <Route path="/posts/:id" element={Blog} />
+        <Route path="/new" element={NewBlogPost} />
+        <Route path="/newAuthor" element={NewAuthor} />
+        <Route path="/modal" element={Modal} />
+      </Routes>
       <Footer />
       {showModal && <Modal handleClose={handleClose} />}
     </BrowserRouter>

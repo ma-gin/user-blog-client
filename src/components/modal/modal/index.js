@@ -7,19 +7,20 @@ export default function Modal({ handleClose }) {
   const [name, setName] = useState("")
   const [surname, setSurname] = useState("")
   const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const newAuthor = { name, surname, email }
+    const newUser = { name, surname, email, password }
     const request = {
       method: "POST",
-      body: JSON.stringify(newAuthor),
+      body: JSON.stringify(newUser),
       headers: {
         "Content-type": "application/json",
       },
     }
     try {
-      let response = await fetch(process.env.REACT_APP_AUTHORS_URL, request)
+      let response = await fetch(process.env.REACT_APP_USERS_URL, request)
       if (response.ok) {
       } else {
         alert("something went wrong")
@@ -63,8 +64,14 @@ export default function Modal({ handleClose }) {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId="author-img" className="mt-2">
-            <Form.Label>Profile Image</Form.Label>
+          <Form.Group controlId="author-email" className="mt-2">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              size="lg"
+              placeholder="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </Form.Group>
           <Form.Group className="d-flex mt-3 justify-content-end">
             <Button type="reset" size="lg" variant="outline-dark">

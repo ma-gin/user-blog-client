@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { Button, Container, Image } from "react-bootstrap"
-import { withRouter } from "react-router"
 import BlogAuthor from "../../components/blog/blog-author"
 import BlogLike from "../../components/likes/BlogLike"
 import "./styles.css"
@@ -56,4 +55,4 @@ class Blog extends Component {
   }
 }
 
-export default withRouter(Blog)
+export default Blog
