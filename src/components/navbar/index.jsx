@@ -3,7 +3,7 @@ import { Container, Navbar, Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import "./styles.css"
 
-export default function Nav({ handleOpen }) {
+export default function Nav({ handleOpen, handleOpenLogin }) {
   return (
     <Navbar expand="lg" className="blog-navbar" fixed="top">
       <Container className="justify-content-between">
@@ -32,8 +32,10 @@ export default function Nav({ handleOpen }) {
             Post Article
           </Button>
           <Button
+            as={Link}
+            to="/register"
             onClick={handleOpen}
-            className="blog-navbar-add-button ms-2"
+            className="blog-navbar-add-button sign-up ms-2"
             size="lg">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,6 +47,23 @@ export default function Nav({ handleOpen }) {
               <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z" />
             </svg>
             Sign Up
+          </Button>
+          <Button
+            as={Link}
+            to="/login"
+            onClick={handleOpenLogin}
+            className="blog-navbar-add-button log-in ms-2"
+            size="lg">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-plus-lg"
+              viewBox="0 0 16 16">
+              <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z" />
+            </svg>
+            Log In
           </Button>
         </div>
       </Container>

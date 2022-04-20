@@ -31,6 +31,9 @@
 .btn-primary {
   border-color: black !important;
 }
-.ms-2 {
+.sign-up {
   background-color: hsl(168, 53%, 70%) !important;
+}
+.log-in {
+  background-color: hsl(83, 53%, 70%) !important;
 }

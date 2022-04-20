@@ -3,6 +3,7 @@ import Nav from "./components/navbar"
 import Footer from "./components/footer"
 import Home from "./views/home"
 import Blog from "./views/blog"
+import Login from "./views/login/Login"
 import NewBlogPost from "./views/new"
 import NewAuthor from "./views/author/index.js"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
@@ -34,7 +35,8 @@ function App() {
         <Route path="/posts/:id" element={Blog} />
         <Route path="/new" element={NewBlogPost} />
         <Route path="/newAuthor" element={NewAuthor} />
-        <Route path="/modal" element={Modal} />
+        <Route path="/register" element={Modal} />
+        <Route path="/login" element={Login} />
       </Routes>
       <Footer />
       {showModal && <Modal handleClose={handleClose} />}

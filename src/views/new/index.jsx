@@ -49,7 +49,6 @@ export default function NewBlogPost() {
     }
     try {
       const response = await fetch("http://localhost:3001/posts", request)
-      console.log(request.body)
       if (response.ok) {
       } else {
         alert("something went wrong")

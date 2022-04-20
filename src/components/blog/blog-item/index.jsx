@@ -5,8 +5,6 @@ import "./styles.css"
 
 export default function BlogItem(props) {
   const { title, cover, author, content, id } = props
-  console.log(props)
-  console.log(id)
   return (
     <Link to={`/posts/${id}`} className="blog-link">
       <div className="d-flex w-100 blog-item">
